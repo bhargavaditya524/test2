@@ -8,7 +8,8 @@ const app = express();
 
 // 🔹 Enable CORS globally, must be BEFORE routes
 app.use(cors({
-  origin: ["https://kaleidoscopic-lily-50eac6.netlify.app/","http://localhost:5173"],// your React frontend
+  // origin: ["https://kaleidoscopic-lily-50eac6.netlify.app/","http://localhost:5173"],// your React frontend
+   origin: "*", // allow all origins (OK for TEST)
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true,
 }));
