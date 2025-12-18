@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import EmployeeModel from './models/Employee.js';
+import EmployeeModel from './Models/Employee.js';
 const port = process.env.PORT || 3001;
 const app = express();
 app.use(cors());
