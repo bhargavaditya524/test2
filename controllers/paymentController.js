@@ -64,10 +64,10 @@ export const verifyPayment = (req, res) => {
     .update(body)
     .digest("hex");
 
-  console.log("EXPECTED:", expectedSignature);
-  console.log("RECEIVED:", razorpay_signature);
-
-  if (expectedSignature === razorpay_signature) {
+    
+    if (expectedSignature === razorpay_signature) {
+    console.log("EXPECTED:", expectedSignature);
+    console.log("RECEIVED:", razorpay_signature);
     return res.json({
       success: true,
       message: "Payment verified successfully",
