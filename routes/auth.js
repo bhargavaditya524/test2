@@ -4,6 +4,7 @@ import EmployeeModel from "../Models/Employee.js";
 const router = express.Router();
 
 router.post("/register", async (req, res) => {
+   console.log("BODY RECEIVED:", req.body); //  ADD THIS
   try {
     const user = await EmployeeModel.create(req.body);
     res.status(201).json(user);
