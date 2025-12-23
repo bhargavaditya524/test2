@@ -4,7 +4,11 @@ import cors from 'cors';
 import EmployeeModel from './Models/Employee.js';
 const port = process.env.PORT || 3001;
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST"],
+  credentials: false
+}));
 app.use(express.json());
 
 mongoose.connect('mongodb+srv://bhargavaditya524_db_user:eUtivY26Ut7z616S@cluster0.zbvrmsm.mongodb.net/?appName=Cluster0');
