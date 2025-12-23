@@ -8,6 +8,7 @@ import authRoutes from "./routes/auth.js";
 const app = express();
 const PORT = process.env.PORT || 4000;
 
+/* ===== MIDDLEWARE ===== */
 app.use(cors({
   origin: "*",
   methods: ["GET", "POST", "PUT", "DELETE"],
@@ -16,11 +17,17 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// 🔹 ROUTES
-app.use("/api/payment", paymentRoutes);
+/* ===== MONGODB ===== */
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB connected"))
+  .catch(err => console.error(err));
+
+/* ===== ROUTES ===== */
+app.use("/api/payment", paymentRoutes);   // ✅ ONLY THIS
 app.use("/api/auth", authRoutes);
 
-// 🔹 TEST ROUTE (VERY IMPORTANT)
+/* ===== HEALTH ===== */
 app.get("/health", (req, res) => {
   res.json({ status: "Backend running" });
 });
